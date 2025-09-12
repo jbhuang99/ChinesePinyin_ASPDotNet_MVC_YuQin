@@ -24,12 +24,12 @@ document.title = "欢迎联系QQ：43930878。教与学_本机版_渔琴(Teachin
 			;
 		}
 		else {
-			fnNewWindowAdvertisement();
+			//fnNewWindowAdvertisement();
 			fnContentFrameworkNotification('欢迎浏览：', '单击此处可浏览整个系统。使用帮助，请咨询：QQ：43930878；EMail:43930878@qq.com', '/favicon.ico');
 		}
 	}
 	catch (e) {
-		fnNewWindowAdvertisement();
+		//fnNewWindowAdvertisement();
 		fnContentFrameworkNotification('欢迎浏览：', '单击此处可浏览整个系统。使用帮助，请咨询：QQ：43930878；EMail:43930878@qq.com', '/favicon.ico');
 
 	}
