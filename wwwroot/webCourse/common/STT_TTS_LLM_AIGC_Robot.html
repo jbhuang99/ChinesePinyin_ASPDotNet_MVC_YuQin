@@ -23,6 +23,7 @@
             white-space: pre-wrap;
             background-color: #f9f9f9;
             overflow-y: auto;
+            vertical-align:top;
         }
         #transcriptSystemExternal {
             margin-top: 20px;
@@ -36,6 +37,7 @@
             white-space: pre-wrap;
             background-color: #f9f9f9;
             overflow-y: auto;
+            vertical-align: top;
         }
 
         button {
@@ -57,7 +59,7 @@
     <h1>语音对话机器人</h1>
     <table width="100%">
         <tr>
-            <td width="50%">
+            <td style="width:50%;vertical-align:top">
                 <div>系统内语音对话【我们←-（严谨准确）互动（驱动想要的操作）→本系统】</div>
                 <button id="startBtnSystemInternal" title="单击将开始打开麦克风录音，系统将自动根据您录音的停顿状态，识别语音，返回对话。非流式语音对话、流式语音对话。期待本系统语音识别您的语音指令，然后打开“作业与测试”，进行语音识别答题、评分等等....正在完善之中...">开始录音对话</button>
                 <button id="stopBtnSystemInternal" title="单击将停止录音对话" disabled>停止录音对话</button>
@@ -67,7 +69,7 @@
                     }
                 </div>
             </td>
-            <td width="50%">
+            <td style="width:50%;vertical-align:top">
                 <div>系统外语音对话【我们←（宽泛闲聊）互动（追问想要的答案）→AIGC】</div>
                 <button id="startBtnSystemExternal" title="需要连接AIGC服务，尚在开发之中...单击将开始打开麦克风录音，系统将自动根据您录音的停顿状态，识别语音，返回对话。非流式语音对话、流式语音对话。期待本系统语音识别您的语音指令，然后连接AIGC，进行语音识别互动追问AIGC的回答，思辨自己想要的答案....需要付费AIGC..." disabled>开始录音对话</button>
                 <button id="stopBtnSystemExternal" title="需要连接AIGC服务，尚在开发之中...单击将停止录音对话" disabled>停止录音对话</button>
