@@ -34,6 +34,9 @@ window.homeworkAndTestPathPart = "";
 ////////////////
 
 ///////////////
+function fnObsoleteForResource(){
+    alert('本功能相关资源，已经移动成为“条目作业与测验”的答案解释。因为:'+"\r"+"\r"+'（本系统建议条目课文←互为驱动→条目作业与测验）。条目作业与测验之中，（字符媒体主导/多媒体辅助）→视媒主导（字符媒体主导/多媒体的图像辅助/多媒体的视频辅助/多媒体的2D辅助/多媒体的3D辅助）/多媒体的听媒辅助/多媒体的触媒辅助/多媒体的嗅媒辅助/多媒体的味媒辅助。');
+}
 function fnAOnMouseOn() {
     var oObject = event.srcElement;
 
@@ -461,7 +464,7 @@ function fnInitailContents() {
           else {
          cLi[intTargetPassInItem].getElementsByTagName("SPAN").item(1).click();
          cLi[intTargetPassInItem].scrollIntoView();
-
+         /**
          var sTeachingEngineering = window.oSrcElement.parentNode.getAttribute("teachingEngineering");
     if (sTeachingEngineering == "" || sTeachingEngineering == null || !(sSearch.has("teachingEngineering")))
     {alert("当前条目课文，您没指定查询，或，没能查询到teachingEngineering即工程文档！"+'【注：标题框架的“概览”可以查看当前条目是否具有“作业与测试”、“工程文档”、“PPT”、“图像视频”、“2D动画”、“3D动画”等等各种资源】');}
@@ -496,12 +499,15 @@ function fnInitailContents() {
          else{
          fnViewTeaching3D();
          }
-            
+            **/
+           if(sSearch.has("homeworkandtest")){
          var sHomeworkandtest= window.oSrcElement.parentNode.getAttribute("homeworkandtest");
-            if ( sHomeworkandtest == "" ||  sHomeworkandtest == null || !(sSearch.has("homeworkandtest")))
+           // if ( sHomeworkandtest == "" ||  sHomeworkandtest == null || !(sSearch.has("homeworkandtest")))
+           if ( sHomeworkandtest == "" ||  sHomeworkandtest == null)
             {alert("当前条目课文，您没指定查询，或，没能查询到homeworkandtest即作业与测验！"+'【注：标题框架的“概览”可以查看当前条目是否具有“作业与测试”、“工程文档”、“PPT”、“图像视频”、“2D动画”、“3D动画”等等各种资源】');}
          else{
          fnViewHomeworkAndTest();
+         }
          }
          }
          }
@@ -1536,12 +1542,12 @@ function fnFindAndView(sResourceType, sResourcePathPart,sResourceName, sResource
             console.log(sResourceType.toUpperCase());
             switch (sResourceType.toUpperCase()) {
                 case "TEXT": { return; break; }
-                case "PLAY": {fnViewTeachingVideo(); break; }
-                case "TEACHINGPLAN": { fnViewTeachingPlan(); break;}
-                case "S2D": { fnViewTeaching2D(); break; }
-                case "S3D": { fnViewTeaching3D(); break;}
+              //  case "PLAY": {fnViewTeachingVideo(); break; }
+             //   case "TEACHINGPLAN": { fnViewTeachingPlan(); break;}
+             //   case "S2D": { fnViewTeaching2D(); break; }
+            //    case "S3D": { fnViewTeaching3D(); break;}
                 case "HOMEWORKANDTEST": { fnViewHomeworkAndTest(); break;}
-                case "TEACHINGENGINEERING": { fnViewTeachingEngineering(); break;}
+           //     case "TEACHINGENGINEERING": { fnViewTeachingEngineering(); break;}
                 default: { var win = open("../common/blank.html", "NoResult", "width=400,height=300,top=" + (screen.height - 300) / 2 + ",left=" + (screen.width - 400) / 2); win.document.write("<p style='text-align:center'>没有查询到相关资源！</p>"); }//alert窗口容易被遮挡。所以没选用  
             }
         }
@@ -3700,12 +3706,13 @@ function fnGeneral() {
         sRowOfGeneral +=
             sSeperationLeft + cATemp[i].textContent + sSeperationRight + sSeperationLine
             + sSeperationLeft + "教材资源：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='text' attrResourceName='教材资源' attrResourceFileExtentionWithDot='.htm'>" + cATemp[i].getAttribute("text") + "</a>" + sSeperation + sSeperationRight + sSeperationLine
-            + sSeperationLeft + "教学工程文档：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='teachingEngineering' attrResourceName='教学工程文档' attrResourceFileExtentionWithDot='.htm'>" + cATemp[i].getAttribute("teachingEngineering") + "</a>" + sSeperation + sSeperationRight + sSeperationLine 
-        + sSeperationLeft + "教学视频：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='play' attrResourceName='教学视频' attrResourceFileExtentionWithDot='.mp4'>" + cATemp[i].getAttribute("play") + "</a>" + sSeperation + sSeperationRight + sSeperationLine
-        + sSeperationLeft + "教学PPT：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='teachingPlan' attrResourceName='教学PPT' attrResourceFileExtentionWithDot='.pptx'>" + cATemp[i].getAttribute("teachingplan") + "</a>" + sSeperation + sSeperationRight + sSeperationLine
-        + sSeperationLeft + "教学2D：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='s2d' attrResourceName='教学2D' attrResourceFileExtentionWithDot='.svgz'>" + cATemp[i].getAttribute("s2d") + "</a>" + sSeperation + sSeperationRight + sSeperationLine
-        + sSeperationLeft + "教学3D：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='s3d' attrResourceName='教学3D' attrResourceFileExtentionWithDot='.x3dv'>" + cATemp[i].getAttribute("s3d") + "</a>" + sSeperation + sSeperationRight + sSeperationLine
-        + sSeperationLeft + "作业与测试：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='homeworkAndTest' attrResourceName='作业与测试' attrResourceFileExtentionWithDot='.htm'>" + cATemp[i].getAttribute("homeworkAndTest") + "</a>" + sSeperation + sSeperationRight + sSeperationLine+ sSeperationLine
+            + sSeperationLeft + "作业与测试：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='homeworkAndTest' attrResourceName='作业与测试' attrResourceFileExtentionWithDot='.htm'>" + cATemp[i].getAttribute("homeworkAndTest") + "</a>" + sSeperation + sSeperationRight + sSeperationLine+ sSeperationLine
+            + sSeperationLeft + "教学工程文档（已经移动成为作业与测试中的资源）：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='teachingEngineering' attrResourceName='教学工程文档' attrResourceFileExtentionWithDot='.htm'>" + cATemp[i].getAttribute("teachingEngineering") + "</a>" + sSeperation + sSeperationRight + sSeperationLine 
+        + sSeperationLeft + "教学视频（已经移动成为作业与测试中的资源）：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='play' attrResourceName='教学视频' attrResourceFileExtentionWithDot='.mp4'>" + cATemp[i].getAttribute("play") + "</a>" + sSeperation + sSeperationRight + sSeperationLine
+        + sSeperationLeft + "教学PPT（已经移动成为作业与测试中的资源）：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='teachingPlan' attrResourceName='教学PPT' attrResourceFileExtentionWithDot='.pptx'>" + cATemp[i].getAttribute("teachingplan") + "</a>" + sSeperation + sSeperationRight + sSeperationLine
+        + sSeperationLeft + "教学2D（已经移动成为作业与测试中的资源）：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='s2d' attrResourceName='教学2D' attrResourceFileExtentionWithDot='.svgz'>" + cATemp[i].getAttribute("s2d") + "</a>" + sSeperation + sSeperationRight + sSeperationLine
+        + sSeperationLeft + "教学3D（已经移动成为作业与测试中的资源）：" + sAOnclickAttribute + " title='单击将跳转到对应的目录条目' attrResourceType='s3d' attrResourceName='教学3D' attrResourceFileExtentionWithDot='.x3dv'>" + cATemp[i].getAttribute("s3d") + "</a>" + sSeperation + sSeperationRight + sSeperationLine
+        + sSeperation + sSeperationRight + sSeperationLine+ sSeperationLine
        ;
     }
    
