@@ -3786,10 +3786,24 @@ function fnMargee() {
     //window.childWindow.focus();//子窗口获取焦点
 }
 */
-function fnMargee() {
+function fnHelp() {
     fnTooManyModelDialog();
-    var winSearch = open('https://yuqin99yuqin99.github.io/WebEdu_LocalVersion_YuQin_DotNetCore21/ASPDotNet_MVC_YuQin/ASPDotNet_MVC_YuQin/wwwroot/webCourse/common/initial.html?text=1689408797769', "search", "width=500,height=350,top=" + (screen.height - 350) / 2 + ",left=" + (screen.width - 500)/2);
-    window.childWindow = winSearch; 
+    var winSearch = open('https://yuqin99yuqin99.github.io/WebEdu_LocalVersion_YuQin_DotNetCore21/ASPDotNet_MVC_YuQin/ASPDotNet_MVC_YuQin/wwwroot/webCourse/common/initial.html?text=1689408797769', "search", "width=500,height=350,top=" + (screen.height - 350) / 2 + ",left=" + (screen.width - 500) / 2);
+    window.childWindow = winSearch;
+}
+function fnMarquee() {
+    fnTooManyModelDialog();
+    var winMarquee = open("../common/blank.html", "winMarquee", "scrollbars=,width=800,height=600,top=" + (screen.height - 600) / 2 + ",left=" + (screen.width - 800) / 2);
+    winMarquee.onload = function() {
+  try {
+    winMarquee.document.body.style.overflow = 'scroll';
+  } catch (e) {}
+};
+  winMarquee.document.body.style.overflow = 'scroll';
+ // winMarquee.document.body.innerHTML=parent.document.getElementById("sIFrameTitle").contentWindow.document.getElementById("id_JinRiTouTiao").innerHTML;
+  winMarquee.document.write(parent.document.getElementById("sIFrameTitle").contentWindow.document.getElementById("id_JinRiTouTiao").innerHTML);
+  winMarquee.document.body.style.overflow = 'scroll';
+    window.childWindow = winMarquee; 
 }
 
 /** function fnTooManyModelDialog1() {
