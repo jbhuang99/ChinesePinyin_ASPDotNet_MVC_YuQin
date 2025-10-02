@@ -37,6 +37,22 @@ window.homeworkAndTestPathPart = "";
 function fnObsoleteForResource(){
     alert('本功能相关资源，已经移动成为“条目作业与测验”的答案解释。因为:'+"\r"+"\r"+'（本系统建议条目课文←互为驱动→条目作业与测验）。条目作业与测验之中，（字符媒体主导/多媒体辅助）→视媒主导（字符媒体主导/多媒体的图像辅助/多媒体的视频辅助/多媒体的2D辅助/多媒体的3D辅助）/多媒体的听媒辅助/多媒体的触媒辅助/多媒体的嗅媒辅助/多媒体的味媒辅助。');
 }
+
+function fnRunningFrom() {
+    var sRunFrom = location.href;
+    switch (true) {
+      case sRunFrom.indexOf("://localhost:") >= 0:
+       //  case sRunFrom.indexOf(".github.io/") >= 0://便于本机网站发布测试免费网站发布
+            return "本系统当前是本机网站发布";
+        case sRunFrom.indexOf(".github.io/") >= 0:
+       //  case sRunFrom.indexOf("://localhost:") >= 0://便于本机网站发布测试免费网站发布
+            return "本系统当前是免费网站发布，可能无法正确使用本功能！请单击本系统第一个条目，该条目的内容框架中，超链接的源码下载到本机运行实现！";
+        default:
+            return "本系统当前是付费网站发布";
+    }
+}
+
+
 function fnAOnMouseOn() {
     var oObject = event.srcElement;
 
@@ -530,8 +546,8 @@ function fnHomeworkAndTestHyperlinkMultimedia() {
     }
 
 function fnOpenRobot(){
-           var win =open("../common/STT_TTS_LLM_AIGC_Robot.html", "STT_TTS_LLM_AIGC_Robot", "fullscreen=0,left=312,top=225,toolbar=no,location=no,directories=no,menubar=no,titlebar=no,scrollbars=no,status=no,resizable=no,copyhistory=no,width=800,height=600");
-//open("STT_TTS_LLM_AIGC_Robot.html", "STT_TTS_LLM_AIGC_Robot", "help:0;resizable:1;dialogWidth:" + screen.width * 0.8 + "px;dialogHeight:" + screen.height * 0.8 + "px;status:0;");
+           var win =open("../common/TTS_STT_LLM_AIGC_Robot.html", "STT_TTS_LLM_AIGC_Robot", "fullscreen=0,left=312,top=225,toolbar=no,location=no,directories=no,menubar=no,titlebar=no,scrollbars=no,status=no,resizable=no,copyhistory=no,width=800,height=600");
+//open("TTS_STT_LLM_AIGC_Robot.html", "STT_TTS_LLM_AIGC_Robot", "help:0;resizable:1;dialogWidth:" + screen.width * 0.8 + "px;dialogHeight:" + screen.height * 0.8 + "px;status:0;");
 window.childWindow = win;
 }
 
@@ -3599,6 +3615,7 @@ function fnUploadHomeworkAndTest() {
 
 
 function fnClean() {
+    if(fnRunningFrom().indexOf("免费")>=0) {alert(fnRunningFrom());} 
     var bWillClean = confirm("清理前请注意备份源文件, 这些文件的物理路径是：" + "\\webCourse\\lessons\\Content");
     //var bWillSaved=confirm("原目录文件将被覆盖,如果需要,请备份原目录文件,该文件的URL是"+'"'+"http://"+sPath+"contents.htm"+'"'+"，物理路径是"+'"'+sPathContentshtmNowNow.substring(0,sPathContentshtmNowNow.length-2)+"contents.htm"+'"');
     //var bWillSaved=confirm("原目录文件将被覆盖,如果需要,请备份原目录文件,该文件的URL是"+'"'+"http://"+sPath+"contents.htm"+'"'+"，物理路径是"+'"'+sPathContentshtmNowNow.substring(0,sPathContentshtmNowNow.lastIndexOf("Tempcontents.asp"))+"contents.htm"+'"');
@@ -3746,6 +3763,7 @@ parent.document.getElementById("sIframeContent").contentWindow.document.write(sR
 function fnSearch() {
     
    //EV_modeAlert();//弹出屏蔽层.好像没起什么作用！
+   if(fnRunningFrom().indexOf("免费")>=0) {alert(fnRunningFrom());} 
     fnTooManyModelDialog();  
     var win = open("../common/Search.html", "Search", "scrollbars=yes,width=800,height=600,top=" + (screen.height - 600) / 2 + ",left=" + (screen.width - 800) / 2);
        window.childWindow = win;
@@ -3788,8 +3806,8 @@ function fnMargee() {
 */
 function fnHelp() {
     fnTooManyModelDialog();
-    var winSearch = open('https://yuqin99yuqin99.github.io/WebEdu_LocalVersion_YuQin_DotNetCore21/ASPDotNet_MVC_YuQin/ASPDotNet_MVC_YuQin/wwwroot/webCourse/common/initial.html?text=1689408797769', "search", "width=500,height=350,top=" + (screen.height - 350) / 2 + ",left=" + (screen.width - 500) / 2);
-    window.childWindow = winSearch;
+    var winSearch = open('https://yuqin99yuqin99.github.io/WebEdu_LocalVersion_YuQin_DotNetCore21/ASPDotNet_MVC_YuQin/ASPDotNet_MVC_YuQin/wwwroot/webCourse/common/initial.html?text=1689408797769', "search", "width=500,height=350,top=" + (screen.height - 350) / 2 + ",left=" + (screen.width - 500)/2);
+    window.childWindow = winSearch; 
 }
 function fnMarquee() {
     fnTooManyModelDialog();
