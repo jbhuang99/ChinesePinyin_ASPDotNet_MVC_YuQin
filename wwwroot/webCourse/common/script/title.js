@@ -128,7 +128,17 @@ window.document.body.scroll="no";
 
 }
 
-
+function fnToggleScreenOfHomeworkAndTest() {
+      switch (true) {
+      case parent.document.getElementById("sFramesetContentAndHomeworkAndTest").rows=="70%,*":     
+           parent.document.getElementById("sFramesetContentAndHomeworkAndTest").rows="100%,*";break;
+           alert(parent.document.getElementById("sFramesetContentAndHomeworkAndTest").rows);
+      case parent.document.getElementById("sFramesetContentAndHomeworkAndTest").rows=="100%,*":
+           parent.document.getElementById("sFramesetContentAndHomeworkAndTest").rows="0%,*";break;
+      default:
+           parent.document.getElementById("sFramesetContentAndHomeworkAndTest").rows="70%,*";
+}
+}
 
 function fnWritePopupContent(src){
 window.oPopup.document.write(src);//待修改
@@ -887,7 +897,35 @@ function fnTTS_Play() {
     msg.rate = 1; // 0.1 to 10
     msg.pitch = 1; //0 to 2
     window.speechSynthesis.speak(msg);
-    **/
+    **/  
+         switch (true) {              
+      case parent.document.getElementById("sFramesetContentAndHomeworkAndTest").rows=="0%,*":     
+            {const utterance = new SpeechSynthesisUtterance(parent.document.getElementById("sIframeHomeworkAndTest").contentWindow.document.body.textContent);
+
+             if(utterance==null||utterance==""){
+             window.speechSynthesis.speak("您好，当前条目的作业测验，没有字符自动朗诵");
+                 }
+            else{
+             window.speechSynthesis.speak(utterance);
+            }}
+            break;
+      case parent.document.getElementById("sFramesetContentAndHomeworkAndTest").rows=="100%,*":
+            {const utterance = new SpeechSynthesisUtterance(parent.document.getElementById("sIframeContent").contentWindow.document.body.textContent);
+
+             if(utterance==null||utterance==""){
+             window.speechSynthesis.speak("您好，当前条目的课文，没有字符自动朗诵");
+                 }
+            else{
+             window.speechSynthesis.speak(utterance);
+            }}
+            break;
+      default: 
+      {
+          const utterance = new SpeechSynthesisUtterance('您好，请单击标题框架的"显示作业测验"设置作业测验或课文，占满内容框架，朗读相应的内容框架！');
+           window.speechSynthesis.speak(utterance);
+             }
+    } 
+    /**
    const utterance = new SpeechSynthesisUtterance(parent.document.getElementById("sIframeContent").contentWindow.document.body.textContent);
    if(utterance==null||utterance==""){
        window.speechSynthesis.speak("您好，当前条目没有字符自动朗诵");
@@ -895,6 +933,7 @@ function fnTTS_Play() {
    else{
    window.speechSynthesis.speak(utterance);
    }
+ **/
 }
 
 function fnTTS_Pause() {

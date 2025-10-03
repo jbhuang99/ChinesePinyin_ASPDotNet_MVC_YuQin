@@ -16,6 +16,11 @@ window.sDivForContentEditInnerHTML = "";//可用于判断该内容框架是否�
 function fnOnLoad() {
 
 document.title = "欢迎联系QQ：43930878。教与学_本机版_渔琴(Teaching&Learning_LocalVersion_YuQin)";
+
+if(parent.document.getElementById("sIFrameTitle")==null)
+{
+	alert('欢迎浏览：'+'单击此处可浏览整个系统。使用帮助，请咨询：QQ：43930878；EMail：43930878@qq.com');
+	fnContentFrameworkNotification('欢迎浏览：', '单击此处可浏览整个系统。使用帮助，请咨询：QQ：43930878；EMail:43930878@qq.com', '/favicon.ico');
 	try {
 		var tempTitle = opener.parent.parent.document.title;
 		//alert(tempTitle);
@@ -31,7 +36,10 @@ document.title = "欢迎联系QQ：43930878。教与学_本机版_渔琴(Teachin
 	catch (e) {
 		//fnNewWindowAdvertisement();
 		fnContentFrameworkNotification('欢迎浏览：', '单击此处可浏览整个系统。使用帮助，请咨询：QQ：43930878；EMail:43930878@qq.com', '/favicon.ico');
-
+	}
+		}
+else{
+	;
 	}
 	
 	/**
@@ -298,7 +306,7 @@ window.oPopup.document.write(src);
 /** 已移动到popup.js。暂时注释function fnPopup(){
 oSrcElement=event.srcElement;
 window.event.returnValue=false;
-try{//独立课文窗口(右击菜单中选择"查看课文")时使用,无法象"复制部分资源"那样使用ASP,因为兼容word转化来的HTML文档的需要.
+try{//独立课文窗口(右击菜单中选择"查看课文")时使用,无法象"复制部分文档"那样使用ASP,因为兼容word转化来的HTML文档的需要.
 	if(parent.frames.item("sIframecontent").document.URL==parent.sHTTPHeader+parent.sOptionsPath+parent.sContentStartName||parent.frames.item("sIframecontent").document.URL==parent.sHTTPHeader+parent.sContentsPath+parent.sContentsName){
 		//window.oPopup.document.getElementById("sToggleToolbarDisplay").childNodes.item(0).disabled=true;//出错！！！！！！
 		//window.oPopup.document.getElementById("sToggleToolbarDisplay").disabled=true;
@@ -333,7 +341,8 @@ catch(e){
 }
 **/
 
-function fnSave() {    
+function fnSave() {  
+	if(parent.document.getElementById('sIframeContents').contentWindow.fnRunningFrom().indexOf("免费")>=0) {alert(fnRunningFrom());} 
     if(document.URL==parent.sHTTPHeader+parent.sOptionsPath+parent.sContentStartName||document.URL==parent.sHTTPHeader+parent.sContentsPath+parent.sContentsName){
 	alert("该内容框架的内容是初始内容或在目录中直接链接的非.htm文件，不允许保存！");
 }
@@ -1002,7 +1011,8 @@ function fnContentFrameworkNotification(sStringTitle, sStringBody, sStringIcon) 
 	}
 }
 function fnHelp() {
-	open("https://yuqin99yuqin99.github.io/WebEdu_LocalVersion_YuQin_DotNetCore21/ASPDotNet_MVC_YuQin/ASPDotNet_MVC_YuQin/wwwroot/", target = "_blank");
+	//open("https://yuqin99yuqin99.github.io/WebEdu_LocalVersion_YuQin_DotNetCore21/ASPDotNet_MVC_YuQin/ASPDotNet_MVC_YuQin/wwwroot/", target = "_blank");
+alert('你可以当前右键菜单中选择“课文编辑切换”，然后可以编辑当前课文，然后可以插入一个超连接阿里云盘之类的网盘链接，链接当前课文的扩展帮助文档。帮助文档案例例如：https://www.alipan.com/s/ebs65wue1dc。然后右键菜单中选择“保存”'+'\r'+'\r'+'【注：课文面向纸张打印，课文的扩展帮助文档面向“（字符媒体主导/多媒体辅助）→视媒主导（字符媒体主导/多媒体的图像辅助/多媒体的视频辅助/多媒体的2D辅助/多媒体的3D辅助）/多媒体的听媒辅助/多媒体的触媒辅助/多媒体的嗅媒辅助/多媒体的味媒辅助”】');
 }
 //document.getElementsByTagName("body").item(0).onload = fnOnLoad;
 function fnNewWindowAdvertisement() {
