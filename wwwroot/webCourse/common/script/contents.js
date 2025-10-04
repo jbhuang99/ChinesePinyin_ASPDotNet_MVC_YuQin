@@ -275,7 +275,7 @@ function fnOnLoad() {
     document.getElementById("sDiv").style.left = -30;
     document.body.scroll = "no";
     fnInitailContents();//初始化目录
-    if (window.confirm('请选择“确定”还是“取消”目录不自动编号！也可后续在标题面板中单击“目录编号”进行切换！单击“显示作业与测试”进行切换\n单击目录条目的书本图标可以伸缩目录！\n单击目录条目的文字可以查看课文！\n双击目录可以切换目录是否全宽！\n右击目录菜单中，可以在线编辑目录、上传课文、作业测验，然后查看！课文、作业测验可以进一步链接字符媒体/多媒体')) {
+    if (window.confirm('请选择“确定”还是“取消”目录不自动编号！也可后续在标题面板中单击“目录编号”进行切换！单击“内容切换”进行切换\n单击目录条目的书本图标可以伸缩目录！\n单击目录条目的文字可以查看课文！\n双击目录可以切换目录是否全宽！\n右击目录菜单中，可以在线编辑目录、上传课文、作业测验，然后查看！课文、作业测验可以进一步链接字符媒体/多媒体')) {
         fnToggleContentsAutoNumber();
     }
     else {
@@ -473,7 +473,7 @@ function fnInitailContents() {
                                     }
                                  }
          if (intTargetPassInItem == 0) {
-             alert("您指定的是第一个条目，或者，您指定的"+sSearch.get("text")+"这一条目不存在！将自动定位到开始条目，即，将自动定位到整个目录的第一个条目！"+"\r"+"\r"+'【注：标题框架的“显示作业与测试”可以切换显示】'+"\r"+"\r"+'【注：标题框架的“概览”可以查看当前条目是否具有“课文”、“作业测验”等等各种文档】');
+             alert("您指定的是第一个条目，或者，您指定的"+sSearch.get("text")+"这一条目不存在！将自动定位到开始条目，即，将自动定位到整个目录的第一个条目！"+"\r"+"\r"+'【注：标题框架的“内容切换”可以切换显示】'+"\r"+"\r"+'【注：标题框架的“概览”可以查看当前条目是否具有“课文”、“作业测验”等等各种文档】');
              cLi[0].getElementsByTagName("SPAN").item(1).click();
              cLi[0].scrollIntoView();
                                  }
@@ -521,7 +521,7 @@ function fnInitailContents() {
            // if ( sHomeworkandtest == "" ||  sHomeworkandtest == null || !(sSearch.has("homeworkandtest")))
            if ( sHomeworkandtest == "" ||  sHomeworkandtest == null)
             {
-                alert("当前条目课文，您没指定查询，或，没能查询到homeworkandtest即作业测验！"+"\r"+"\r"+'【注：标题框架的“显示作业与测试”可以切换显示】'+"\r"+"\r"+'【注：标题框架的“概览”可以查看当前条目是否具有“课文”、“作业测验”等等各种文档】');
+                alert("当前条目课文，您没指定查询，或，没能查询到homeworkandtest即作业测验！"+"\r"+"\r"+'【注：标题框架的“内容切换”可以切换显示】'+"\r"+"\r"+'【注：标题框架的“概览”可以查看当前条目是否具有“课文”、“作业测验”等等各种文档】');
                 }
          else{
              alert('当前URL指令弹出当前条目的“作业测验”窗口，但是默认可能被浏览器拦截！请设置浏览器允许当前网站的弹出窗口！'+"\r"+"\r"+'【或者：直接单击标题框架的“作业测验”，打开当前条目的作业测验！】');
@@ -533,7 +533,7 @@ function fnInitailContents() {
 
          else
         {
-            alert("您URL中没有指定?text=的搜索条目！将自动定位到开始条目，即，将自动定位到整个目录的第一个条目！"+"\r"+"\r"+'【注：标题框架的“显示作业与测试”可以切换显示】'+"\r"+"\r"+'【注：标题框架的“概览”可以查看当前条目是否具有“课文”、“作业测验”等等各种文档】');
+            alert("您URL中没有指定?text=的搜索条目！将自动定位到开始条目，即，将自动定位到整个目录的第一个条目！"+"\r"+"\r"+'【注：标题框架的“内容切换”可以切换显示】'+"\r"+"\r"+'【注：标题框架的“概览”可以查看当前条目是否具有“课文”、“作业测验”等等各种文档】');
             cLi[0].getElementsByTagName("SPAN").item(1).click();
             cLi[0].scrollIntoView();
             } 
@@ -1696,7 +1696,7 @@ function fnViewText() {
             return;
         }
         else {
-            //alert('课文文档默认在“内容框架”中显示，当前操作将在独立窗口中显示课文文档，主要用于多部分部分文档比较时使用。此时右键菜单中提供的在线编辑等功能将被禁用！但仍然可试验按住Ctrl,Shift,Alt键滚动鼠标而放缩、移动课文等功能！');
+            //alert('课文文档默认在“内容框架”中显示，当前操作将在独立窗口中内容切换文档，主要用于多部分部分文档比较时使用。此时右键菜单中提供的在线编辑等功能将被禁用！但仍然可试验按住Ctrl,Shift,Alt键滚动鼠标而放缩、移动课文等功能！');
             //var sHeadUrl = "/webcourse/lessons/";//因为github发布可能增加路径部分，所以改写。
             var sHeadUrl = "../lessons/";
             var sText = sHeadUrl + "content/book" + sPathPartForText + "/" + sTextName + "/" + sTextName + ".htm";
