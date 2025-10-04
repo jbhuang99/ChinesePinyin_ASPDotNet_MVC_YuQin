@@ -342,7 +342,7 @@ catch(e){
 **/
 
 function fnSave() {  
-	if(parent.document.getElementById('sIframeContents').contentWindow.fnRunningFrom().indexOf("免费")>=0) {alert(fnRunningFrom());} 
+	if(parent.document.getElementById('sIframeContents').contentWindow.fnRunningFrom().indexOf("免费")>=0) {alert(parent.document.getElementById('sIframeContents').contentWindow.fnRunningFrom());} 
     if(document.URL==parent.sHTTPHeader+parent.sOptionsPath+parent.sContentStartName||document.URL==parent.sHTTPHeader+parent.sContentsPath+parent.sContentsName){
 	alert("该内容框架的内容是初始内容或在目录中直接链接的非.htm文件，不允许保存！");
 }
