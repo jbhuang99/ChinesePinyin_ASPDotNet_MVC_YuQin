@@ -22,10 +22,46 @@ function fnToggleScreen() {
         }
     }
 }
+function fnToggleItemDisplay(i) {
+   
+    var oTable = document.getElementsByTagName("table").item(0);
+    var cTr = Array.from(oTable.rows);
+
+    var oChildren=cTr[i].querySelectorAll('*');
+    var iChildrenLength=oChildren.length;
+  // alert(iChildrenLength);
+    for(m=3;m<iChildrenLength;m++)
+    {
+    if(oChildren[m].style.display == "none")
+    { 
+        oChildren[m].style.display=window.oArrayForTr1Display[m];
+    //oChildren[m].style.display = "block";
+    }
+    else{ 
+      window.oArrayForTr1Display[m]=oChildren[m].style.display;
+      oChildren[m].style.display = "none";
+    }
+    }
+
+    
+    for (j=i;j<i+7;j++){
+
+    if (cTr[j+1].style.display == "none") 
+    {
+        cTr[j+1].style.display = window.oArrayForTr2ToEndDisplay[j+1]; 
+        }
+    else {
+        window.oArrayForTr2ToEndDisplay[j+1]=cTr[j+1].style.display;
+        //alert(oArray[j+1]);     
+        cTr[j+1].style.display = "none";
+        }     
+    }
+    }
 
 function fnHomeworkAndTest() {
-   // fnTooManyModelDialog();  
-  
+   // fnTooManyModelDialog(); 
+  window.oArrayForTr1Display = [];
+  window.oArrayForTr2ToEndDisplay = [];
   
  /**
   window.speechSynthesis.cancel();
@@ -36,7 +72,9 @@ function fnHomeworkAndTest() {
     fnValidationHomeworkAndTest();
     var oDate = new Date();
     var sTimeStamp=oDate.getTime();
-    var cTr = document.getElementsByTagName("table").item(0).getElementsByTagName("tr");
+  //  var cTr = document.getElementsByTagName("table").item(0).getElementsByTagName("tr");//这样会包含嵌套表格的行。
+  //alert(cTr[1].getElementsByTagName("td").item(0).innerHTML);
+  var oTable = document.getElementsByTagName("table").item(0);var cTr = Array.from(oTable.rows); // 只包含主表的直接<tr>。解决上述包含嵌套表格的行。
    //alert(cTr[1].getElementsByTagName("td").item(0).innerHTML);
     var iTrLenth = cTr.length;
    var iProblemNum = iTrLenth / 8;
@@ -44,7 +82,7 @@ function fnHomeworkAndTest() {
    
     for (i = 0; i < iTrLenth; i++) {
         //for (j = 0; j < 6; j=i*j) {
-        if ((i + 8) % 8 === 0) { cTr[i].getElementsByTagName("td").item(0).innerHTML = "<span style=\"color:red\">题目" + ((i + 8) / 8) + "：</span>" + cTr[i].getElementsByTagName("td").item(0).innerHTML; }
+        if ((i + 8) % 8 === 0) { cTr[i].getElementsByTagName("td").item(0).innerHTML = "<span style=\"color:red\">题目" + ((i + 8) / 8) + "：<input type=\"button\" value=\"切换题目显示\" onclick=\"fnToggleItemDisplay("+i+")\" /><input type=\"button\" value=\"服务端作业测验正在开发之中...\" /></span>" + cTr[i].getElementsByTagName("td").item(0).innerHTML; }
 
         if ((i + 8) % 8 === 1) {cTr[i].getElementsByTagName("td").item(0).innerHTML = "<span><span style=\"color:red\"><input type=\"radio\" name=\"options" + sTimeStamp + Math.floor(((i + 8) / 8)) + "\" />(A)</span>" + cTr[i].getElementsByTagName("td").item(0).innerHTML + "</span>"; }
         if ((i + 8) % 8 === 2) {cTr[i].getElementsByTagName("td").item(0).innerHTML = "<span><span style=\"color:red\"><input type=\"radio\" name=\"options" + sTimeStamp + Math.floor(((i + 8) / 8)) + "\" />(B)</span>" + cTr[i].getElementsByTagName("td").item(0).innerHTML + "</span>"; }
@@ -74,7 +112,8 @@ function fnHomeworkAndTest() {
 
 function fnValidationHomeworkAndTest() {
     try {
-        var cTr = document.getElementsByTagName("table").item(0).getElementsByTagName("tr");//最外层表格嵌套了表格（如题干有表格）的问题没有解决
+       // var cTr = document.getElementsByTagName("table").item(0).getElementsByTagName("tr");//最外层表格嵌套了表格（如题干有表格）的问题没有解决
+        var oTable = document.getElementsByTagName("table").item(0);var cTr = Array.from(oTable.rows); // 只包含主表的直接<tr>。解决上述包含嵌套表格的行。
         var iTrLenth = cTr.length;
        // alert(iTrLenth);
        // if (iTrLenth % 7 != 0) { alert("上传的作业与测试可能有问题，无法正常运行。请基于word模板文件，排版制作作业与测试，然后上传！每道题必须是7个表行。总表行必须是7的倍数。"); }
